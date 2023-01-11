@@ -41,6 +41,8 @@ router.post('/addnotes', fetchuser, [
         console.log(error.message)
     }
 });
+
+
 //route for updating note
 router.put('/updatenotes/:id', fetchuser,  async (req, res) => {
     try{
@@ -80,8 +82,10 @@ catch(error) {
     console.log(error.message)
 }
 });
+
+
 //deleting a note
-router.post('/deletenotes/:id', fetchuser, async (req, res) => {
+router.delete('/deletenotes/:id', fetchuser, async (req, res) => {
     try{ 
         //check wheteher note exist in database
         let note= await Notes.findById(req.params.id)

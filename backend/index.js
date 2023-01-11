@@ -2,8 +2,12 @@
 const connectToMongo=require('./db');
 //importing express
 const express = require('express');
+var cors = require('cors')
 connectToMongo();
 const app = express();
+
+
+app.use(cors())
 const port = 5000
 //middleware function for parsing incoming json request
 app.use(express.json())
