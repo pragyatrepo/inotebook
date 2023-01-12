@@ -7,21 +7,22 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
-import NoteState from './context/notes/NoteState';
-import Alert from './components/alert';
+import NoteState from './components/NoteState';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import AlertContext from './context/notes/AlertContext';
+import Alert from './components/Alert'
+import Alertstate from './components/Alertstate';
 
 function App() {
   return (
     <>
-     {/* <AlertContext>  */}
+       <Alertstate>
       <NoteState>
         
         <Router>
          
           <Navbar />
+          <Alert/>
           
           <Routes>
             <Route exact path="/about" element={<About />}></Route>
@@ -32,9 +33,10 @@ function App() {
           </Routes>
           
         </Router>
-       
+        
       </NoteState>
-      {/* </AlertContext> */}
+      </Alertstate>
+        
     </>
   );
 }

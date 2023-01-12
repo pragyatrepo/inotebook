@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import AlertContext from '../context/notes/alertContext'
 
 const Signup = () => {
-  
+  const alert1=useContext(AlertContext)
+    const {setMsg}=alert1
   const [credentials, setCredentials] = useState({ name:"",email: "", password: "" })
     let history = useNavigate();
   const handlesubmit = async (e) => {
@@ -19,6 +22,10 @@ const Signup = () => {
     if (json.success) {
         localStorage.setItem("token", json.authtoken)
         history("/")
+        setMsg("Account created successfully","success")
+    }
+    else{
+      setMsg("Enter valid details","danger")
     }
 }
 const onchange = (e) => {
